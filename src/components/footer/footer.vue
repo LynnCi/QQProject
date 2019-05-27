@@ -19,7 +19,7 @@
     export default {
       name: "footMenu",
       props:['activeIndex']
-    }
+    }-
 </script>
 
 <style lang="scss" scoped>
