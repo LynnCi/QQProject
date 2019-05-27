@@ -17,7 +17,7 @@
 
 <script>
     export default {
-      name: "footer",
+      name: "footMenu",
       props:['activeIndex']
     }
 </script>
