@@ -10,14 +10,9 @@
 <script>
     export default {
         name: "headTop",
-        data () {
-          return {
-            sidebar:false,
-          }
-        },
         methods: {
           toggleSideBar() {
-            this.$emit('toggleSideBar');
+            this.$store.dispatch('ToggleSideBar');
           }
         }
     }

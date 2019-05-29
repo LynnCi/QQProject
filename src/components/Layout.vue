@@ -8,7 +8,8 @@
     <masking></masking>
     <!-- footMenu -->
     <foot-menu :activeIndex="0"></foot-menu>
-
+    <!-- backToTop -->
+    <back-to-top></back-to-top>
     <!-- main -->
     <div class="main_wrapper">
       <img src="../assets/logo.png" alt="">
@@ -18,10 +19,12 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import headTop from './headTop/headTop';
   import sidebar from './sidebar/sidebar';
   import masking from './masking/masking';
   import footMenu from './footer/footer';
+  import backToTop from './common/backToTop';
 
 export default {
   name: 'Layout',
@@ -29,7 +32,8 @@ export default {
     headTop,
     sidebar,
     masking,
-    footMenu
+    footMenu,
+    backToTop
   },
   data () {
     return {
@@ -37,12 +41,12 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  methods:{
-    toggleSideBar(){
-      this.sidebar = !this.sidebar;
-
-    }
+  computed:{
+    ...mapGetters([
+      'sidebar',
+    ])
   }
+
 }
 </script>
 
@@ -61,6 +65,10 @@ export default {
   }
   .main_wrapper{
     padding-top:1.95rem;
+    transition:all .28s ease-out;
+    transform:translateX(13rem);
+  }
+  .footer{
     transition:all .28s ease-out;
     transform:translateX(13rem);
   }
