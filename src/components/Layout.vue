@@ -1,45 +1,28 @@
 <template>
   <div class="app_wrapper" :class="{hideSidebar:sidebar}">
-    <!-- headtop -->
-    <head-top @toggleSideBar="toggleSideBar"></head-top>
     <!-- sidebar -->
     <sidebar></sidebar>
     <!-- masking -->
     <masking></masking>
-    <!-- footMenu -->
-    <foot-menu :activeIndex="0"></foot-menu>
     <!-- backToTop -->
     <back-to-top></back-to-top>
     <!-- main -->
-    <div class="main_wrapper">
-      <img src="../assets/logo.png" alt="">
-      <h1 class="title">{{ msg }}</h1>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex';
-  import headTop from './headTop/headTop';
   import sidebar from './sidebar/sidebar';
   import masking from './masking/masking';
-  import footMenu from './footer/footer';
   import backToTop from './common/backToTop';
 
 export default {
   name: 'Layout',
   components:{
-    headTop,
     sidebar,
     masking,
-    footMenu,
     backToTop
-  },
-  data () {
-    return {
-      sidebar:false,
-      msg: 'Welcome to Your Vue.js App'
-    }
   },
   computed:{
     ...mapGetters([
