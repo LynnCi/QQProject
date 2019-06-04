@@ -1,9 +1,13 @@
+/****************************************** */
+/*  src/components/common/mixin.js          */
+/****************************************** */
+
 import { getStyle } from '../../utils/utils'
 
 export const loadMore = {
-  directives:{
-    'load-more':{
-      bind:(el,binding) => {
+  directives: {
+    'load-more': {
+      bind: (el, binding) => {
         let windowHeight = window.screen.height;
         let height;
         let setTop;
@@ -15,15 +19,15 @@ export const loadMore = {
         let heightEl;
         let scrollType = el.attributes.type && el.attributes.type.value;
         let scrollReduce = 2;
-        if(scrollType == 2){
+        if (scrollType == 2) {
           scrollEl = el;
           heightEl = el.children[0];
-        }else{
+        } else {
           scrollEl = document.body;
           heightEl = el;
         }
 
-        el.addEventListener('touchstart',() => {
+        el.addEventListener('touchstart', () => {
           height = heightEl.clientHeight;
           if (scrollType == 2) {
             height = height
@@ -31,16 +35,16 @@ export const loadMore = {
           setTop = el.offsetTop;
           paddingBottom = getStyle(el, 'paddingBottom');
           marginBottom = getStyle(el, 'marginBottom');
-        },false)
+        }, false)
 
-        el.addEventListener('touchmove',() => {
+        el.addEventListener('touchmove', () => {
           loadMore();
-        },false)
+        }, false)
 
-        el.addEventListener('touchend',() => {
-          oldScrollTop = scrollEl.scrollTo();
+        el.addEventListener('touchend', () => {
+          oldScrollTop = scrollEl.scrollTop;
           moveEnd();
-        },false)
+        }, false)
 
         const moveEnd = () => {
           requestFram = requestAnimationFrame(() => {
@@ -56,11 +60,11 @@ export const loadMore = {
         }
 
         const loadMore = () => {
-          if(scrollEl.scrollTop + windowHeight >= height + setTop + paddingBottom + marginBottom - scrollReduce){
+          if (scrollEl.scrollTop + windowHeight >= height + setTop + paddingBottom + marginBottom - scrollReduce) {
             binding.value();
           }
         }
       }
     }
   }
-}
+};

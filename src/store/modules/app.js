@@ -6,7 +6,8 @@ import Cookies from 'js-cookie';
 
 const app = {
   state: {
-    sidebar: !+Cookies.get('sidebarStatus')
+    sidebar: !+Cookies.get('sidebarStatus'),
+    scroll:{},
   },
   mutations: {
     TOGGLE_SIDEBAR: state => {
@@ -17,12 +18,15 @@ const app = {
       }
       state.sidebar = !state.sidebar;
     },
-  },
-  actions: {
-    ToggleSideBar: ({ commit }) => {
+    SET_SCROLL:({commit}) => {
       commit('TOGGLE_SIDEBAR')
     },
-  }
+    SetScroll:({commit,state})=>{
+      let nameValue = location.pathname;
+      let topValue = document.documentElement.scrollTop || document.body.scrollTop;
+      commit('SET_SCROLL',{name:nameValue,top:topValue });
+    }
+  },
 };
 
 export default app;

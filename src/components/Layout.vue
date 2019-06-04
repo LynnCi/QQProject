@@ -24,6 +24,11 @@ export default {
     masking,
     backToTop
   },
+  mounted(){
+    window.onscroll = () => {
+      this.$store.dispatch('SetScroll');
+    }
+  },
   computed:{
     ...mapGetters([
       'sidebar',

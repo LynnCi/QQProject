@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <svg-icon></svg-icon>
     <router-view/>
+    <svg-icon></svg-icon>
   </div>
 </template>
 
