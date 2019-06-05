@@ -8,10 +8,33 @@ import store from './store/index'
 
 Vue.config.productionTip = false
 
+const whiteList = ['/login', '/signup', '/forget', '/authredirect'];
+
+router.beforeEach((to,from,next) => {
+  document.title = (to.name || '') + '- vue wap demo';
+  next();
+  if(store.getters.token){
+    if(to.path === '/login'){
+      next({
+        path:'/message'
+      });
+    }else{
+      next();
+    }
+  }else{
+    if(whiteList.indexOf(to.path) !== -1){
+      next()
+    }else{
+      next('/login');
+    }
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App)
+  template:'<App/>',
+  components:{App},
 })

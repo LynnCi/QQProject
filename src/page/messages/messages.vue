@@ -2,8 +2,8 @@
   <div>
     <!-- head -->
     <head-top>
-      <span slot='head_text' class="head_text">消息</span>
-      <span slot='head_btn' class="head_btn" @click="handleHeadBtn"><i class="iconfont icon-tianjia"></i></span>
+      <span slot="head_text" class="head_text">消息</span>
+      <span slot="head_btn" class="head_btn" @click="handleHeadBtn"><i class="iconfont icon-tianjia"></i></span>
     </head-top>
     <!-- main -->
     <div class="main_wrapper">

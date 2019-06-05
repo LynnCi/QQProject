@@ -8,7 +8,7 @@
       <slot name="head_btn"></slot>
       <slot name="head_back"></slot>
       <slot name="head_input"></slot>
-</header>
+    </header>
 </template>
 
 <script>
